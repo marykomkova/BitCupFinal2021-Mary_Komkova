@@ -41,6 +41,7 @@ public class MainPage extends BasePage {
     }
 
     public FindJobPage clickOnFindJob() {
+        waitUntil(TimeConstants.PAGE_LOAD_TIMEOUT, ExpectedConditions.presenceOfElementLocated(findJobButton));
         driver.findElement(findJobButton).click();
         return new FindJobPage(driver);
     }
