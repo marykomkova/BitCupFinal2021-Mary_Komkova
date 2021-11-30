@@ -33,12 +33,11 @@ public class FinalTest extends BaseTest {
             vacancies.get(i).click();
             VacancyPage vacancyPage = new VacancyPage(driver);
             Assert.assertTrue(vacancyPage.isOpened());
-
+            vacancyPage.storeInformation();
             vacancyPage.checkText(word);
             driver.navigate().back();
             vacanciesPage = new VacanciesPage(driver);
             Assert.assertTrue(vacanciesPage.isOpened());
         }
-
     }
 }
