@@ -16,16 +16,16 @@ public class FinalTest extends BaseTest {
     @Test
     public void test() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.open("https://www.epam.com/careers");
+        mainPage.open(PropertiesReader.getValue("link"));
         Assert.assertTrue(mainPage.isOpened());
-        mainPage.switchLanguage("Global");
+        mainPage.switchLanguage(PropertiesReader.getValue("language"));
         FindJobPage findJobPage = mainPage.clickOnFindJob();
         Assert.assertTrue(findJobPage.isOpened());
-        String word = "Jenkins";
+        String word = PropertiesReader.getValue("keyword");
         findJobPage.enterKeyword(word);
-        findJobPage.enterLocation("Minsk");
-        findJobPage.enterSkills("Software Test Engineering");
-        findJobPage.chooseAdds("Remote");
+        findJobPage.enterLocation(PropertiesReader.getValue("city"));
+        findJobPage.enterSkills(PropertiesReader.getValue("skill"));
+        findJobPage.chooseAdds(PropertiesReader.getValue("add"));
         VacanciesPage vacanciesPage = findJobPage.clickOnFind();
         Assert.assertTrue(vacanciesPage.isOpened());
         List<WebElement> vacancies = vacanciesPage.getListOfVacancies();
